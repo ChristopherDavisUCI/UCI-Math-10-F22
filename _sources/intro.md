@@ -13,7 +13,7 @@ Nothing much is here yet (as of September 16, 2022).  More material will be post
 
 **Learning Outcomes**.  The primary learning outcomes for Math 10 are that students will be able to:
 * select appropriate data types (both built-in Python types as well as types defined in external libraries) when performing computations;
-* write code which is \emph{Pythonic} (for example, avoiding unnecessary for loops) and adheres to the \emph{DRY} (Don't Repeat Yourself) principle;
+* write code which is *Pythonic* (for example, avoiding unnecessary for loops) and adheres to the *DRY* (Don't Repeat Yourself) principle;
 * manipulate structured data using NumPy and pandas;
 * given unfamiliar data, use techniques specific to the pandas library to gain a deeper understanding of the data;
 * produce interactive visualizations conveying significant aspects of datasets using Altair;
