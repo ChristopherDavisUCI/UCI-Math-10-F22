@@ -159,6 +159,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="Week1-Tuesday.html">
+     Week 1 Tuesday
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="Week1-Videos.html">
      Week 1 Videos
     </a>
@@ -420,7 +425,6 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="week-1-monday">
 <h1>Week 1 Monday<a class="headerlink" href="#week-1-monday" title="Permalink to this headline">#</a></h1>
-<p>Recommendation: Duplicate this notebook (left side) and type along.</p>
 <section id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -447,6 +451,7 @@ title="Print to PDF"
 </section>
 <section id="warm-up-two-useful-pandas-series-methods">
 <h2>Warm-up: Two useful pandas Series methods<a class="headerlink" href="#warm-up-two-useful-pandas-series-methods" title="Permalink to this headline">#</a></h2>
+<p>Reminder: If we want to get a column named <code class="docutils literal notranslate"><span class="pre">&quot;Product&quot;</span></code> out of a pandas DataFrame, we can use the following syntax.  The result is a pandas Series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Product&quot;</span><span class="p">]</span>
@@ -470,6 +475,7 @@ Name: Product, Length: 6445, dtype: object
 </div>
 </div>
 </div>
+<p>Here is the first of the two pandas Series methods we want to introduce.  (Think of a method like a function, but it’s a function that is attached to a specific object.  In this case, the <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> method is attached to our pandas Series.)  This <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> method tells us how often each value occurs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Product&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -493,7 +499,8 @@ Name: Product, Length: 170, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<p>We can also tell how many items appear in the “Product” column, 170, by looking at the length of the above Series.  If all you care about is what items occur, and you don’t care about how often they occur, then it makes sense to use a different pandas Series method, <code class="docutils literal notranslate"><span class="pre">unique</span></code>.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Product&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
@@ -627,6 +634,7 @@ Name: Product, Length: 170, dtype: int64
 </div>
 </div>
 </div>
+<p>Here we check how many items occur, by calling the <code class="docutils literal notranslate"><span class="pre">len</span></code> function on <code class="docutils literal notranslate"><span class="pre">df[&quot;Product&quot;].unique()</span></code>.  Notice how <code class="docutils literal notranslate"><span class="pre">len</span></code> goes at the front of this expression; that’s why we’re calling <code class="docutils literal notranslate"><span class="pre">len</span></code> a function rather than a method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Product&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
@@ -639,10 +647,13 @@ Name: Product, Length: 170, dtype: int64
 </div>
 </div>
 </div>
+<p>Notice how this answer, 171, is one more than our length of 170 for the <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> output.  This is presumably because the <code class="docutils literal notranslate"><span class="pre">unique</span></code> method includes the possibility of a missing value, and the <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> method does not.  (A student later pointed out to me that the <code class="docutils literal notranslate"><span class="pre">unique</span></code> output does include <code class="docutils literal notranslate"><span class="pre">nan</span></code>, which stands for “not a number”, and represents missing values.)</p>
 </section>
 <section id="indexing-for-pandas-series">
 <h2>Indexing for pandas Series<a class="headerlink" href="#indexing-for-pandas-series" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<p>Indexing for pandas Series and especially for pandas DataFrames takes some getting used to.  What various types of indexing represents is largely something that needs to be memorized.</p>
+<p>Here is a reminder of what the top three rows in our DataFrame look like.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -755,6 +766,7 @@ Name: Product, Length: 170, dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>Here is the code we used last week to get the zeroth element (remember that counting in Python starts with zero) out of the “RPrice” column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the zeroth element out of the RPrice column</span>
@@ -768,6 +780,7 @@ Name: Product, Length: 170, dtype: int64
 </div>
 </div>
 </div>
+<p>It’s very reasonable to ask why we used this strange <code class="docutils literal notranslate"><span class="pre">.iloc[0]</span></code> syntax, when some similar versions also work in this case.  For example, <code class="docutils literal notranslate"><span class="pre">.loc[0]</span></code> also works in this case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;RPrice&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -780,6 +793,7 @@ Name: Product, Length: 170, dtype: int64
 </div>
 </div>
 </div>
+<p>In fact, even <code class="docutils literal notranslate"><span class="pre">[0]</span></code> also works in this case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;RPrice&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -792,6 +806,7 @@ Name: Product, Length: 170, dtype: int64
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.iloc[0]</span></code> version is really the correct version, and the other two only work by coincidence.  Let’s look more closely at this pandas Series (this column from the DataFrame) <code class="docutils literal notranslate"><span class="pre">df[&quot;RPrice&quot;]</span></code>.  Notice there are seemingly two columns of numbers.  The left-hand column shows what’s called the <em>index</em> of the pandas Series, and the right-hand column (which should be thought of as the more important column) contains the <em>values</em> of the pandas Series.  The elements in the index should be thought of as labels.  For example, <code class="docutils literal notranslate"><span class="pre">0</span></code> is the label for the float <code class="docutils literal notranslate"><span class="pre">3.5</span></code> at the top.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;RPrice&quot;</span><span class="p">]</span>
@@ -815,6 +830,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>Let’s try sorting these prices, from biggest to smallest.  We use the <code class="docutils literal notranslate"><span class="pre">sort_values</span></code> method, which by default sorts the values from smallest to biggest, so we include what’s called a <em>keyword argument</em> <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> to tell pandas to instead sort them in decreasing order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;RPrice&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -822,6 +838,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>Notice how the index for the new Series <code class="docutils literal notranslate"><span class="pre">s</span></code> seems to be in a scrambled order now.  That is because the index has not been sorted, only the prices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span>
@@ -845,6 +862,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">3.5</span></code> we saw earlier at the top still has the same label <code class="docutils literal notranslate"><span class="pre">0</span></code>, and if we call <code class="docutils literal notranslate"><span class="pre">s[0]</span></code>, we do not get the top element in <code class="docutils literal notranslate"><span class="pre">s</span></code>, instead we get the element (or theoretically elements) with label <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -857,6 +875,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>The same goes for <code class="docutils literal notranslate"><span class="pre">loc</span></code>.  Think of <code class="docutils literal notranslate"><span class="pre">loc</span></code> as indexing by label and think of <code class="docutils literal notranslate"><span class="pre">iloc</span></code> as indexing by integer position.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -869,6 +888,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>For this Series <code class="docutils literal notranslate"><span class="pre">s</span></code>, to get the top value, the indexing we need to use is <code class="docutils literal notranslate"><span class="pre">iloc</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -881,6 +901,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>As an aside, if you need to access the labels directly, it is stored in the <code class="docutils literal notranslate"><span class="pre">index</span></code> attribute of the pandas Series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">index</span>
@@ -896,9 +917,11 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>We’ll see the exact same <code class="docutils literal notranslate"><span class="pre">loc</span></code> vs <code class="docutils literal notranslate"><span class="pre">iloc</span></code> distinction in the context of pandas DataFrames.  There also are some additional ways to index on DataFrames, related to the fact that DataFrames are two-dimensional objects, as opposed to Series which are one-dimensional objects.</p>
 </section>
 <section id="indexing-for-pandas-dataframes">
 <h2>Indexing for pandas DataFrames<a class="headerlink" href="#indexing-for-pandas-dataframes" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> indexing works basically the same for pandas DataFrames.  Look down a few cells at our <code class="docutils literal notranslate"><span class="pre">df</span></code> DataFrame.  If we go to row <code class="docutils literal notranslate"><span class="pre">2</span></code> (counting from zero) and column <code class="docutils literal notranslate"><span class="pre">4</span></code> (counting from zero), do you agree that we reach the value <code class="docutils literal notranslate"><span class="pre">'Takis</span> <span class="pre">-</span> <span class="pre">Hot</span> <span class="pre">Chilli</span> <span class="pre">Pepper</span> <span class="pre">&amp;</span> <span class="pre">Lime'</span></code>?  (Do not include the column names when you start counting, that should be considered as a header, and do not include the index (0, 1, 2, …) at the left-most side when counting.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
@@ -911,6 +934,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>If we instead want to index using the labels instead of the integer positions, then we use <code class="docutils literal notranslate"><span class="pre">loc</span></code> instead of <code class="docutils literal notranslate"><span class="pre">iloc</span></code>.  The row value stays the same since it is both the label and the integer position (that was what caused the confusion above with the <code class="docutils literal notranslate"><span class="pre">df[&quot;RPrice&quot;]</span></code> Series), but now the column value changes from the integer <code class="docutils literal notranslate"><span class="pre">4</span></code> to the string <code class="docutils literal notranslate"><span class="pre">&quot;Product&quot;</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;Product&quot;</span><span class="p">]</span>
@@ -923,7 +947,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
@@ -1205,6 +1229,7 @@ Name: RPrice, Length: 6445, dtype: float64
 <p>6445 rows × 18 columns</p>
 </div></div></div>
 </div>
+<p>At the very top of the DataFrame, we see the column names displayed.  It’s often useful to have access to these column names, and they are stored in the DataFrame’s <code class="docutils literal notranslate"><span class="pre">columns</span></code> attribute.  (Aside.  Notice that this <code class="docutils literal notranslate"><span class="pre">df.columns</span></code> is not a list nor a pandas Series nor any other data type we have met before.  Python is filled with many special-purpose types of objects.  This <code class="docutils literal notranslate"><span class="pre">df.columns</span></code> is a pandas Index object, but I don’t think we will use any special features of this type of object in Math 10, so we will mostly ignore it.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
@@ -1220,6 +1245,8 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>At the very left-hand side of the DataFrame, the row labels are displayed.  These labels are stored in the <code class="docutils literal notranslate"><span class="pre">index</span></code> attribute.  (Aside. I expected when I evaluated this to see something like <code class="docutils literal notranslate"><span class="pre">Index([0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">...,</span> <span class="pre">6443,</span> <span class="pre">6445])</span></code>, but instead we see <code class="docutils literal notranslate"><span class="pre">RangeIndex(start=0,</span> <span class="pre">stop=6445,</span> <span class="pre">step=1)</span></code>.  The distinction is not important for us; presumably the one used by pandas in this case is more memory efficient, since it does not need to store all the explicit values.)</p>
+<p>These row labels are important, but we won’t use them quite as often as we will use the column labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
@@ -1232,6 +1259,8 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>Let’s see some more types of indexing for pandas DataFrames.  There is no way to know how this works in advance.  Some of these conventions seem a little contradictory to me (the fact that some types of indexing access columns and some types of indexing access rows), and it’s just something you need to memorize.</p>
+<p>If you want to access a sub-DataFrame containing only certain columns, you can pass a list of those column names.  Repetitions are fine.  Notice how we have two pairs of square brackets.  The outer pair starts the indexing, and the inner pair creates a Python list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;RPrice&quot;</span><span class="p">,</span> <span class="s2">&quot;RPrice&quot;</span><span class="p">,</span> <span class="s2">&quot;Location&quot;</span><span class="p">]]</span>
@@ -1334,7 +1363,8 @@ Name: RPrice, Length: 6445, dtype: float64
 <p>6445 rows × 3 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<p>Here is an example of what is called <em>slicing</em>.  Notice how this accesses rows, not columns.  The following is short-hand for “get the first 7 rows”.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span>
 </pre></div>
@@ -1531,7 +1561,8 @@ Name: RPrice, Length: 6445, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<p>Above when we wrote <code class="docutils literal notranslate"><span class="pre">df[:7]</span></code>, that was an abbreviation for <code class="docutils literal notranslate"><span class="pre">df[0:7]</span></code>, so the following returns the exact same sub-DataFrame.  Related to the fact that numbering in Python starts at zero, when we specify endpoints in Python, usually the left endpoint is included but the right endpoint is not included.  In this case, the zeroth row is included but the seventh row (i.e., the row at integer position <code class="docutils literal notranslate"><span class="pre">7</span></code>, it would also be reasonable to call this the eighth row) is not.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
 </pre></div>
@@ -1728,6 +1759,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>Let’s confirm that we really are getting seven rows.  If you call the function <code class="docutils literal notranslate"><span class="pre">len</span></code> on a pandas DataFrame, you get the number of rows.  (That’s different from the Matlab convention.  In Matlab, calling <code class="docutils literal notranslate"><span class="pre">length</span></code> returns the length of the longest dimension.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[:</span><span class="mi">7</span><span class="p">])</span>
@@ -1740,6 +1772,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>Another way to find the number of rows is to first get the tuple representing the shape of the DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
@@ -1752,6 +1785,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>And then get the zeroth element out of this tuple, which represents the number of rows.  (If instead we used <code class="docutils literal notranslate"><span class="pre">.shape[1]</span></code>, that would get the number of columns.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1767,6 +1801,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </section>
 <section id="boolean-indexing">
 <h2>Boolean indexing<a class="headerlink" href="#boolean-indexing" title="Permalink to this headline">#</a></h2>
+<p>The most powerful type of indexing for us will be what is called <em>Boolean indexing</em>.  Let’s see an example on a smaller DataFrame.  Here we make <code class="docutils literal notranslate"><span class="pre">df2</span></code> by hand, instead of by reading in the contents of a csv file.  This isn’t the most important part of this section, but I’ll just point out that we are passing a dictionary to the DataFrame constructor function, <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>.  The keys in this dictionary will be the column names, and the values in this dictionary will be the values in the columns.  There are many other things we could pass to <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> instead of a dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -1778,6 +1813,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </div>
 </div>
 </div>
+<p>Here is the resulting DataFrame, <code class="docutils literal notranslate"><span class="pre">df2</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
@@ -1855,6 +1891,7 @@ Name: RPrice, Length: 6445, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>The point of this section is not constructing DataFrames but instead the point is how to use Boolean indexing.  Before we get to Boolean indexing, here is an example of a <em>Boolean Series</em>.  It represents, in which positions is the value in column “A” strictly greater than 4?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4</span>
@@ -1874,6 +1911,8 @@ Name: A, dtype: bool
 </div>
 </div>
 </div>
+<p>Here is an example of Boolean indexing.  Inside of the square brackets is the exact Boolean Series we saw above.  We are forming a sub-DataFrame consisting of all the rows in which the Boolean Series is <code class="docutils literal notranslate"><span class="pre">True</span></code>.  In other words, we are forming the sub-DataFrame of <code class="docutils literal notranslate"><span class="pre">df2</span></code> consisting of all rows where the value in the “A” column is strictly greater than 4.</p>
+<p>It is worth looking at this and the next example slowly, until you understand how they work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">]</span>
@@ -1927,6 +1966,7 @@ Name: A, dtype: bool
 </table>
 </div></div></div>
 </div>
+<p>We can use the same type of Boolean indexing with a Series instead of a DataFrame on the outside.  Here we are getting all the values in the “B” column corresponding to rows where the value in the “A” column is strictly greater than 4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">][</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">]</span>
@@ -1942,6 +1982,7 @@ Name: B, dtype: int64
 </div>
 </div>
 </div>
+<p>Here is a reminder of how the original DataFrame looked.  Try to convince yourself that the pandas Series output by the above cell is exactly the sub-Series of column “B” corresponding to rows where the “A” column value is strictly greater than 4.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
@@ -2019,11 +2060,14 @@ Name: B, dtype: int64
 </table>
 </div></div></div>
 </div>
+<p>Let’s see a more advanced example, still using Boolean indexing.  Here is the goal.  (This will help with a problem on the corresponding worksheet.)</p>
+<ul class="simple">
+<li><p>Find the sub-DataFrame where the value in column “C” is strictly greater than 2 and where the value in column “A” column is not equal to 1.</p></li>
+</ul>
+<p>Our strategy will be to make one Boolean Series for the column “C” restriction, then make another Boolean Series for the column “A” restriction, and then to combine them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the sub-DataFrame where the value in C column is &gt; 2 and where A column is not equal to 1</span>
-<span class="c1"># Warning: in pandas, use &amp;, in base Python, use and</span>
-<span class="n">df2</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -2040,6 +2084,7 @@ Name: C, dtype: bool
 </div>
 </div>
 </div>
+<p>To check “not equal” in Python, we can use <code class="docutils literal notranslate"><span class="pre">!=</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span>
@@ -2059,9 +2104,11 @@ Name: A, dtype: bool
 </div>
 </div>
 </div>
+<p>We now create the Boolean Series where the previous two Boolean Series are both <code class="docutils literal notranslate"><span class="pre">True</span></code>.  If you’ve done some Python programming before, you might expect to use the word <code class="docutils literal notranslate"><span class="pre">and</span></code>, and that is correct in base Python, but in pandas (and in NumPy) usually we want instead to use the ampersand symbol, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Warning: in pandas, use &amp;, in base Python, use and</span>
+<span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2078,6 +2125,7 @@ dtype: bool
 </div>
 </div>
 </div>
+<p>We now use Boolean indexing with the Boolean Series we just created.  The following looks complicated, but the part inside the brackets is exactly the above code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)]</span>
@@ -2137,6 +2185,7 @@ dtype: bool
 </table>
 </div></div></div>
 </div>
+<p>The above output represents the sub-DataFrame of <code class="docutils literal notranslate"><span class="pre">df2</span></code> consisting of all rows for which the “C” value is strictly greater than 2 and for which the “A” value is not equal to 1.</p>
 </section>
 </section>
 
