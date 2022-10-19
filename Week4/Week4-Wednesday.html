@@ -1557,6 +1557,7 @@ title="Print to PDF"
 </script></div></div>
 </div>
 <p>Step 3.  Tell Altair how to respond to the selection.  Here we use <code class="docutils literal notranslate"><span class="pre">alt.condition</span></code> to say that if the point is selected, use the default coloring and an opacity of <code class="docutils literal notranslate"><span class="pre">1</span></code>, and if the point is not selected, use light grey for the color and make the line 80% transparent (an opacity of <code class="docutils literal notranslate"><span class="pre">0.2</span></code>).</p>
+<p>Try clicking on one of the stock exchange abbreviations listed in the legend below.  Notice how the chart responds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Abbreviation&quot;</span><span class="p">],</span> <span class="n">bind</span><span class="o">=</span><span class="s2">&quot;legend&quot;</span><span class="p">)</span>
