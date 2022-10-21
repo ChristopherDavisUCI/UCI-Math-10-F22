@@ -2,8 +2,6 @@
 
 Use the Navigation menu on the left to find the course content. 
 
-Nothing much is here yet (as of September 16, 2022).  More material will be posted throughout the course.
-
 **Introduction to Programming for Data Science**
 
 **About the class**.  The goal of this course is to introduce programming in Python, with an emphasis on some of the tools that are most relevant to *data science*.  There are two primary parts of the course:
