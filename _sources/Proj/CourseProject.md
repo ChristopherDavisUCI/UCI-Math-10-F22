@@ -9,7 +9,7 @@ The following are requirements to receive a passing score on the course project.
 * This is an individual project (not a group project).
 * Use the *Project Template* available in the *Project* category on Deepnote.
 * Using the Share & publish link on Deepnote, enable public sharing in the "Share project" section, and **enable Comment privileges**. Then submit that link on Canvas.
-* The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren't covered in Math 10.  You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can upload the dataset to Deepnote yourself, such as a dataset that you downloaded from Kaggle.  (**Warning**.  Deepnote does not allow datasets larger than 100mb to be uploaded.)
+* The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren't covered in Math 10.  You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can upload the dataset to Deepnote yourself, such as a dataset that you downloaded from Kaggle, that you got from [openml.org](https://www.openml.org/), or that you got from UC Irvine's own [Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php).  (**Warning**.  Deepnote does not allow datasets larger than 100mb to be uploaded.)
 * The project should clearly build on the Math 10 material.  If you're an expert in Python material that was not covered in Math 10, you are of course welcome to use that, but the project should use the topics of Math 10 in an essential way (see the rubric below).
 * Answer the questions at the top of the Deepnote template, especially the question regarding whether you want your project posted in the course notes.  Here are examples of student projects [from Winter 2022](https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html) and examples of student projects [from Spring 2022](https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html).
 * Anything that is taken from another source (either the idea for the project or a piece of code, even if you edit that code) should be explicitly referenced with a link.  (For example, you could write, "The configuration of this Altair chart was adapted from \[link\].").
@@ -48,5 +48,11 @@ Can I use a different plotting library?
 What if I'm worried my project is too short?
 * It's fine to switch to a different topic halfway through your project.  If you finish what you originally planned and want to start something different, that's fine, even if it uses a different dataset.  This isn't like a history paper where you should have a coherent focus from start to end.
 
+Can you look at my project early?
+* I'm happy to give a quick first impression and let you know if I have any immediate suggestions.  (I won't have time to read it thoroughly until the final submission.)
+
 Do I need to post my project in the course notes?
-* No, that is totally optional, but it might be a nice idea if you would like to show the project if applying for an internship or grad school, for example. 
+* No, that is totally optional, but it might be a nice idea if you would like to show the project if applying for an internship or grad school, for example.
+
+How can I use an Excel file instead of a CSV file?
+* If you have an Excel file (with an extension .xlsx or .xls) instead of a csv file, you can try using `pd.read_excel` instead of `pd.read_csv`.  That usually doesn't work for me, but if I first try `!pip install openpyxl` and then try to use `pd.read_excel`, it usually works.  It might be easier to just open the file in Excel, save it as a comma-separated csv file there, and then upload that csv file.  Of course another option is just to open the Excel file in Excel or Google Sheets and then save it as a csv file from there.

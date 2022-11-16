@@ -699,7 +699,7 @@ title="Print to PDF"
 <li><p>This is an individual project (not a group project).</p></li>
 <li><p>Use the <em>Project Template</em> available in the <em>Project</em> category on Deepnote.</p></li>
 <li><p>Using the Share &amp; publish link on Deepnote, enable public sharing in the “Share project” section, and <strong>enable Comment privileges</strong>. Then submit that link on Canvas.</p></li>
-<li><p>The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren’t covered in Math 10.  You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can upload the dataset to Deepnote yourself, such as a dataset that you downloaded from Kaggle.  (<strong>Warning</strong>.  Deepnote does not allow datasets larger than 100mb to be uploaded.)</p></li>
+<li><p>The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren’t covered in Math 10.  You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can upload the dataset to Deepnote yourself, such as a dataset that you downloaded from Kaggle, that you got from <a class="reference external" href="https://www.openml.org/">openml.org</a>, or that you got from UC Irvine’s own <a class="reference external" href="https://archive.ics.uci.edu/ml/index.php">Machine Learning Repository</a>.  (<strong>Warning</strong>.  Deepnote does not allow datasets larger than 100mb to be uploaded.)</p></li>
 <li><p>The project should clearly build on the Math 10 material.  If you’re an expert in Python material that was not covered in Math 10, you are of course welcome to use that, but the project should use the topics of Math 10 in an essential way (see the rubric below).</p></li>
 <li><p>Answer the questions at the top of the Deepnote template, especially the question regarding whether you want your project posted in the course notes.  Here are examples of student projects <a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html">from Winter 2022</a> and examples of student projects <a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html">from Spring 2022</a>.</p></li>
 <li><p>Anything that is taken from another source (either the idea for the project or a piece of code, even if you edit that code) should be explicitly referenced with a link.  (For example, you could write, “The configuration of this Altair chart was adapted from [link].”).</p></li>
@@ -754,9 +754,17 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>It’s fine to switch to a different topic halfway through your project.  If you finish what you originally planned and want to start something different, that’s fine, even if it uses a different dataset.  This isn’t like a history paper where you should have a coherent focus from start to end.</p></li>
 </ul>
+<p>Can you look at my project early?</p>
+<ul class="simple">
+<li><p>I’m happy to give a quick first impression and let you know if I have any immediate suggestions.  (I won’t have time to read it thoroughly until the final submission.)</p></li>
+</ul>
 <p>Do I need to post my project in the course notes?</p>
 <ul class="simple">
 <li><p>No, that is totally optional, but it might be a nice idea if you would like to show the project if applying for an internship or grad school, for example.</p></li>
+</ul>
+<p>How can I use an Excel file instead of a CSV file?</p>
+<ul class="simple">
+<li><p>If you have an Excel file (with an extension .xlsx or .xls) instead of a csv file, you can try using <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>.  That usually doesn’t work for me, but if I first try <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">openpyxl</span></code> and then try to use <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code>, it usually works.  It might be easier to just open the file in Excel, save it as a comma-separated csv file there, and then upload that csv file.  Of course another option is just to open the Excel file in Excel or Google Sheets and then save it as a csv file from there.</p></li>
 </ul>
 </section>
 </section>
