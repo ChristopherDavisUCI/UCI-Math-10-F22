@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Worksheet 13 &#8212; UC Irvine Math 10, Fall 2022</title>
+    <title>Worksheet 14 &#8212; UC Irvine Math 10, Fall 2022</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Worksheet 14" href="Worksheet14.html" />
-    <link rel="prev" title="Week 8 Wednesday" href="Week8-Wednesday.html" />
+    <link rel="next" title="Week 9" href="../Week9/Week9-Intro.html" />
+    <link rel="prev" title="Worksheet 13" href="Worksheet13.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -437,13 +437,13 @@ const thebe_selector_output = ".output, .cell_output"
      Week 8 Wednesday
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Worksheet13.html">
      Worksheet 13
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Worksheet14.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Worksheet 14
     </a>
    </li>
@@ -574,7 +574,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Week8/Worksheet13.ipynb"
+        <a href="../_sources/Week8/Worksheet14.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -634,33 +634,43 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-engineering">
-   Feature Engineering
+  <a class="reference internal nav-link" href="#importing-the-data">
+   Importing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#one-hot-encoding">
-   One-hot encoding
+  <a class="reference internal nav-link" href="#this-data-is-not-normally-distributed">
+   This data is not normally distributed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#splitting-the-data-with-train-test-split">
-   Splitting the data with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     train_test_split
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#price-predictions-using-a-decision-tree-with-mean-absolute-error">
+   Price predictions using a Decision Tree with Mean Absolute Error
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#predicting-survival-using-a-decision-tree">
-   Predicting survival using a decision tree
+  <a class="reference internal nav-link" href="#another-tree-diagram-using-mean-squared-error">
+   Another tree diagram, using Mean Squared Error
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saving-the-results">
-   Saving the results
+  <a class="reference internal nav-link" href="#dividing-the-data">
+   Dividing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-errors-and-test-errors">
+   Training errors and Test errors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#u-shaped-test-error-curve">
+   U-shaped test error curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpretation-questions">
+   Interpretation questions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -682,7 +692,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Worksheet 13</h1>
+                <h1>Worksheet 14</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -693,33 +703,43 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feature-engineering">
-   Feature Engineering
+  <a class="reference internal nav-link" href="#importing-the-data">
+   Importing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#one-hot-encoding">
-   One-hot encoding
+  <a class="reference internal nav-link" href="#this-data-is-not-normally-distributed">
+   This data is not normally distributed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#splitting-the-data-with-train-test-split">
-   Splitting the data with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     train_test_split
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#price-predictions-using-a-decision-tree-with-mean-absolute-error">
+   Price predictions using a Decision Tree with Mean Absolute Error
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#predicting-survival-using-a-decision-tree">
-   Predicting survival using a decision tree
+  <a class="reference internal nav-link" href="#another-tree-diagram-using-mean-squared-error">
+   Another tree diagram, using Mean Squared Error
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#saving-the-results">
-   Saving the results
+  <a class="reference internal nav-link" href="#dividing-the-data">
+   Dividing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-errors-and-test-errors">
+   Training errors and Test errors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#u-shaped-test-error-curve">
+   U-shaped test error curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpretation-questions">
+   Interpretation questions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -742,72 +762,152 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-13">
-<h1>Worksheet 13<a class="headerlink" href="#worksheet-13" title="Permalink to this headline">#</a></h1>
-<p>The goal of this worksheet is to use a Decision Tree classifier to predict whether or not a passenger of the Titanic survived.</p>
-<p>Many of the ideas in this worksheet come from <a class="reference external" href="https://www.kaggle.com/code/zlatankr/titanic-random-forest-82-78">this notebook</a> on Kaggle by <a class="reference external" href="https://www.kaggle.com/zlatankr">ZlatanKremonic</a>.  The dataset we use comes from a <a class="reference external" href="https://www.kaggle.com/competitions/titanic">Kaggle competition</a>.</p>
-<section id="feature-engineering">
-<h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-14">
+<h1>Worksheet 14<a class="headerlink" href="#worksheet-14" title="Permalink to this headline">#</a></h1>
+<p>Authors (3 maximum; use your full names): <strong>BLANK</strong></p>
+<p>In this worksheet, we will investigate the <a class="reference external" href="https://www.kaggle.com/datasets/harlfoxem/housesalesprediction">King County dataset</a> which contains sale prices for houses sold in King County in Washington State.  (Here are the <a class="reference external" href="https://www.kaggle.com/datasets/harlfoxem/housesalesprediction/discussion/207885">column definitions</a> for this dataset.)</p>
+<p>This house price data contains houses which are much more expensive than typical.  These outliers can have a big impact on our Machine Learning models.</p>
+<section id="importing-the-data">
+<h2>Importing the data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Load the attached Titanic dataset.</p></li>
-<li><p>Using Boolean indexing, remove the rows where the “Embarked” column value is missing.  (This should only remove two rows.)</p></li>
-<li><p>Drop the “PassengerId” column using the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method, with <code class="docutils literal notranslate"><span class="pre">drop(&quot;PassengerId&quot;,</span> <span class="pre">axis=???)</span></code>.  You should probably use the <code class="docutils literal notranslate"><span class="pre">copy</span></code> method to prevent warnings in the next step.</p></li>
-<li><p>Add a column “AgeNull” which contains <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value in the “Age” column is missing and contains <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.  The code to do this is shorter than you might expect: <code class="docutils literal notranslate"><span class="pre">df[&quot;AgeNull&quot;]</span> <span class="pre">=</span> <span class="pre">df[&quot;Age&quot;].isna()</span></code>.</p></li>
-<li><p>Fill in the missing values in the “Age” column with the median value from that column. Use the pandas Series method <code class="docutils literal notranslate"><span class="pre">fillna</span></code>.  (Replace the “Age” column with this new column that does not have any missing values.)</p></li>
-<li><p>Add a column “IsFemale” which contains <code class="docutils literal notranslate"><span class="pre">True</span></code> if the value in the “Sex” column is <code class="docutils literal notranslate"><span class="pre">&quot;female&quot;</span></code>.  (As with the “AgeNull” column above, you shouldn’t need to use <code class="docutils literal notranslate"><span class="pre">map</span></code> or a for loop or anything like that.)</p></li>
-<li><p>Add a column “CabinLetter” which contains the first character in the string from the “Cabin” column.  Use the pandas Series method <code class="docutils literal notranslate"><span class="pre">map</span></code>, together with a lambda function and the <code class="docutils literal notranslate"><span class="pre">na_action</span></code> keyword argument so that missing values don’t raise an error.  (Look up the documentation for <code class="docutils literal notranslate"><span class="pre">map</span></code> to see what the possible values are for <code class="docutils literal notranslate"><span class="pre">na_action</span></code>.)</p></li>
-<li><p>Check your answer.  The current DataFrame should have 889 rows and 14 columns.</p></li>
+<li><p>Import the attached file <em>kc_house_data.csv</em> as <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p></li>
+<li><p>Define the sub-DataFrame <code class="docutils literal notranslate"><span class="pre">dfX</span></code> as consisting of every row in <code class="docutils literal notranslate"><span class="pre">df</span></code> and consisting of the columns from “bedrooms” to the end.  Use <code class="docutils literal notranslate"><span class="pre">dfX</span> <span class="pre">=</span> <span class="pre">df.loc[???,</span> <span class="pre">???]</span></code> with two slices.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">sery</span></code> as the “price” column from <code class="docutils literal notranslate"><span class="pre">df</span></code>.  (We call it <code class="docutils literal notranslate"><span class="pre">sery</span></code> instead of <code class="docutils literal notranslate"><span class="pre">dfy</span></code> because this is a pandas Series.)</p></li>
 </ul>
 </section>
-<section id="one-hot-encoding">
-<h2>One-hot encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h2>
+<section id="this-data-is-not-normally-distributed">
+<h2>This data is not normally distributed<a class="headerlink" href="#this-data-is-not-normally-distributed" title="Permalink to this headline">#</a></h2>
+<p>(I don’t know much about statistics, so please let me know if anything here is wrong!)</p>
+<p>Many quantities approximately follow a normal distribution, but house prices definitely do not.  Let’s briefly see that in the context of this dataset.</p>
 <ul class="simple">
-<li><p>Use scikit-learn’s <code class="docutils literal notranslate"><span class="pre">OneHotEncoding</span></code> class to perform one-hot encoding on the columns “Embarked” and “CabinLetter”.  (Use both columns at once, for example, <code class="docutils literal notranslate"><span class="pre">encoder.fit(df[[&quot;Embarked&quot;,</span> <span class="pre">&quot;CabinLetter&quot;]])</span></code>.)</p></li>
-<li><p>Include the transformed columns in the DataFrame. Use <code class="docutils literal notranslate"><span class="pre">encoder.get_feature_names_out()</span></code> to get the names of these columns.</p></li>
-<li><p>Check your answer.  The current DataFrame should still have 889 rows, but now it should have 26 columns.</p></li>
+<li><p>How many total houses are there in this dataset?</p></li>
+<li><p>What is the mean price value?</p></li>
+<li><p>What is the standard deviation of the price values?</p></li>
+<li><p>What is the maximum house price in this dataset?</p></li>
+<li><p>How many houses in this data set have a price over three million dollars?  (First make a Boolean Series containing <code class="docutils literal notranslate"><span class="pre">True</span></code> if the house price is greater than three million and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise, and then call the <code class="docutils literal notranslate"><span class="pre">sum</span></code> method on this Boolean Series.)</p></li>
+<li><p>In a normal distribution with this mean and this standard deviation, what percentage of houses what percentage of houses would have value under three million?  First import the <code class="docutils literal notranslate"><span class="pre">norm</span></code> object from <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>, and then use the following code.  (The <code class="docutils literal notranslate"><span class="pre">:.15%</span></code> tells Python to display the number as a percentage, not as a probability, and to include 15 decimal places.)</p></li>
 </ul>
-</section>
-<section id="splitting-the-data-with-train-test-split">
-<h2>Splitting the data with <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code><a class="headerlink" href="#splitting-the-data-with-train-test-split" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Make a list <code class="docutils literal notranslate"><span class="pre">features</span></code> containing the names of all the numeric columns in the DataFrame except for the “Survived” column.  (Use list comprehension together with <code class="docutils literal notranslate"><span class="pre">is_numeric_dtype</span></code> from <code class="docutils literal notranslate"><span class="pre">pandas.api.types</span></code>.  You can do this all at once, or first make a list and then get rid of the “Survived” entry using the Python list method <code class="docutils literal notranslate"><span class="pre">remove</span></code>.  Notice that <code class="docutils literal notranslate"><span class="pre">remove</span></code> changes this list <em>in place</em>.)</p></li>
-<li><p>Divide the data into a training set and a test set using <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>.  For the input features, use <code class="docutils literal notranslate"><span class="pre">df[features]</span></code>.  For the target, use the “Survived” column.  For the size, use <code class="docutils literal notranslate"><span class="pre">train_size</span></code> to specify that we should use 60% of the rows for the training set.  Name the resulting objects <code class="docutils literal notranslate"><span class="pre">X_train,</span> <span class="pre">X_test,</span> <span class="pre">y_train,</span> <span class="pre">y_test</span></code>.</p></li>
-</ul>
-</section>
-<section id="predicting-survival-using-a-decision-tree">
-<h2>Predicting survival using a decision tree<a class="headerlink" href="#predicting-survival-using-a-decision-tree" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Instantiate a <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> object <code class="docutils literal notranslate"><span class="pre">clf</span></code>.  Include restrictions on the complexity of the tree using the keyword arguments <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> and/or <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> when you instantiate the classifier.  (There is more information on what we are looking for a few steps below.)</p></li>
-<li><p>Fit the classifier using <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">y_train</span></code>.</p></li>
-<li><p>Try to experiment with different values of <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> and/or <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> until you have a tree which seems to be performing well (say, over 80% accuracy on the test set, as calculated using <code class="docutils literal notranslate"><span class="pre">clf.score</span></code>) and which does not seem to be drastically overfitting the data (say, the accuracy on the training set should be within 5% of the accuracy on the test set).  Be sure you are never calling the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method with the test set; you should only use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method or the <code class="docutils literal notranslate"><span class="pre">score</span></code> method with the test set.</p></li>
-</ul>
-<p><strong>Comment</strong>.  We will later see a more refined way to detect overfitting, using <code class="docutils literal notranslate"><span class="pre">log_loss</span></code> instead of <code class="docutils literal notranslate"><span class="pre">score</span></code>.</p>
-<ul class="simple">
-<li><p>When you have values of <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> and/or <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> that seem to be working well, try running the code again, beginning with the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> step.  This will give new training and testing data.  The new tree should continue to work well.</p></li>
-<li><p>Create a pandas Series using the classifier’s <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code> attribute as the Series values, and using the <code class="docutils literal notranslate"><span class="pre">feature_names_in_</span></code> attribute as the Series index.  Sort the values of this pandas Series from largest to smallest using the <code class="docutils literal notranslate"><span class="pre">sort_values</span></code> method and the <code class="docutils literal notranslate"><span class="pre">ascending</span></code> keyword argument.</p></li>
-<li><p>Which features seem to be the most relevant to predicting survival?</p></li>
-</ul>
-<p><strong>Comment</strong>.  Honestly the one-hot encoded columns do not seem very useful in the examples I have tried, so don’t be surprised if most or all of those show up with an importance of 0.</p>
-</section>
-<section id="saving-the-results">
-<h2>Saving the results<a class="headerlink" href="#saving-the-results" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>When you have a classifier that is working well (i.e., is getting good results on the test set and not severely overfitting the training data), save the resulting <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> object <code class="docutils literal notranslate"><span class="pre">clf</span></code> as a pickle file named <em>wkst13-ans.pickle</em>, as in the <a class="reference external" href="https://christopherdavisuci.github.io/UCI-Math-10-F22/Week1/Worksheet1.html">Worksheet 1 instructions</a>, and upload that pickle file to Canvas.</p></li>
-<li><p>If you want to check that your object saved correctly, you can use the following code.  Then make sure the resulting <code class="docutils literal notranslate"><span class="pre">clf_saved</span></code> object seems correct (for example, it should perform well on the test data).</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;wkst13-ans.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">clf_saved</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>f&quot;{norm.cdf(3000000, loc=???, scale=???):.15%}&quot;
 </pre></div>
 </div>
 </section>
+<section id="price-predictions-using-a-decision-tree-with-mean-absolute-error">
+<h2>Price predictions using a Decision Tree with Mean Absolute Error<a class="headerlink" href="#price-predictions-using-a-decision-tree-with-mean-absolute-error" title="Permalink to this headline">#</a></h2>
+<p>Create an instance of either <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> or <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.  (Which makes sense for this supervised learning task?)  Name the object <code class="docutils literal notranslate"><span class="pre">reg</span></code> or <code class="docutils literal notranslate"><span class="pre">clf</span></code>, as appropriate.  Specify the following keyword arguments when you instantiate this object.</p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">criterion=&quot;???&quot;</span></code>.  Look up the options, and choose the option corresponding to Mean Absolute Error.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">max_depth=3</span></code>.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes=5</span></code>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fit the object using <code class="docutils literal notranslate"><span class="pre">dfX</span></code> as the input features and using <code class="docutils literal notranslate"><span class="pre">sery</span></code> as the target.  (This took about two minutes when I tried.  It’s not obvious why, but the fitting will be much faster below when we use Mean Squared Error instead.)</p></li>
+</ul>
+<ul class="simple">
+<li><p>Make a diagram illustrating the fit tree, using the following code.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_tree</span><span class="p">(</span>
+    <span class="n">reg</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">reg</span><span class="o">.</span><span class="n">feature_names_in_</span><span class="p">,</span>
+    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Refer to the above tree diagram when answering the following questions in a markdown cell (not in a Python comment).</p>
+<ul class="simple">
+<li><p>Which features (columns) were used by this tree?</p></li>
+<li><p>Do you see how <code class="docutils literal notranslate"><span class="pre">max_depth=3</span></code> is reflected in this diagram?  What about <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes=5</span></code>?</p></li>
+</ul>
+</section>
+<section id="another-tree-diagram-using-mean-squared-error">
+<h2>Another tree diagram, using Mean Squared Error<a class="headerlink" href="#another-tree-diagram-using-mean-squared-error" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Make a new instance, this time using Mean Squared Error as the <code class="docutils literal notranslate"><span class="pre">criterion</span></code>, but keeping the other parameters the same.</p></li>
+<li><p>Again fit the object.  (The computation should be much faster than in the example using Mean Absolute Error.  I don’t know why that is.)</p></li>
+<li><p>Again make a tree diagram.</p></li>
+</ul>
+<p>Answer the following in a markdown cell (not as a Python comment).</p>
+<ul class="simple">
+<li><p>Notice how one of the leaf nodes contains very few samples.  Was the same true in the previous diagram?</p></li>
+<li><p>Which tends to be more influenced by outliers, Mean Squared Error or Mean Absolute Error?  How does that relate to the previous question?</p></li>
+</ul>
+</section>
+<section id="dividing-the-data">
+<h2>Dividing the data<a class="headerlink" href="#dividing-the-data" title="Permalink to this headline">#</a></h2>
+<p>We want to illustrate how decision trees are prone to overfitting.  This will be more obvious if we use less than the full 20,000 rows in the dataset, and if we don’t use the most relevant columns.  (For example, instead of using the size of the house, we will use the size of the basement.)</p>
+<ul class="simple">
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">sample</span></code> method of <code class="docutils literal notranslate"><span class="pre">df</span></code> to select 2000 random rows.  Specify <code class="docutils literal notranslate"><span class="pre">random_state=34</span></code>.  (This value was chosen to make sure some of the most expensive houses are included in the sample.)  Name this 2000 row DataFrame <code class="docutils literal notranslate"><span class="pre">df2</span></code>.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">sery2</span></code> to be the “price” column from <code class="docutils literal notranslate"><span class="pre">df2</span></code>, and define <code class="docutils literal notranslate"><span class="pre">dfX2</span></code> to be the following columns from <code class="docutils literal notranslate"><span class="pre">df2</span></code>: “sqft_basement”, “zipcode”, “yr_built”, “condition”, “view”, “waterfront”, “condition”.  (We are choosing these columns because they are somewhat random and thus do a good job of illustrating overfitting.)</p></li>
+<li><p>Divide these into a training set and a test set using the following:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">dfX2</span><span class="p">,</span>
+    <span class="n">sery2</span><span class="p">,</span>
+    <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>(We are setting <code class="docutils literal notranslate"><span class="pre">random_state=4</span></code> because that value will make a nice U-shaped test error curve below.  Other values I tried also make a U-shaped test error curve, but <code class="docutils literal notranslate"><span class="pre">4</span></code> is the value I found where the U-shape is most clear.)</p>
+</section>
+<section id="training-errors-and-test-errors">
+<h2>Training errors and Test errors<a class="headerlink" href="#training-errors-and-test-errors" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Define two empty dictionaries, <code class="docutils literal notranslate"><span class="pre">train_dict</span></code> and <code class="docutils literal notranslate"><span class="pre">test_dict</span></code>.  (To define an empty dictionary, you can use <code class="docutils literal notranslate"><span class="pre">{}</span></code>.)</p></li>
+</ul>
+<p>For each integer value of <code class="docutils literal notranslate"><span class="pre">n</span></code> from <code class="docutils literal notranslate"><span class="pre">2</span></code> to <code class="docutils literal notranslate"><span class="pre">300</span></code>, do the following.  (In other words, each step will be repeated 299 times.  Use a for loop, and put all of the following inside the body of the for loop.  The entire for loop should only take about 10 seconds to run.  This is quite a contrast to the situation above, when we were using Mean Absolute Error.)</p>
+<ul class="simple">
+<li><p>Instantiate a new <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> using Mean Squared Error for the <code class="docutils literal notranslate"><span class="pre">criterion</span></code>, using <code class="docutils literal notranslate"><span class="pre">max_depth=50</span></code>, and using <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> as <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p>Fit the regressor using <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">y_train</span></code>.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>, compute the Mean Squared Error between <code class="docutils literal notranslate"><span class="pre">y_train</span></code> and the predicted values.  Put this error as a value into the <code class="docutils literal notranslate"><span class="pre">train_dict</span></code> dictionary with the key <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>, compute the Mean Squared Error between <code class="docutils literal notranslate"><span class="pre">y_test</span></code> and the predicted values.  (Be sure you do not fit the regressor again!  We should never fit a model using the test set.)  Put this error as a value into the <code class="docutils literal notranslate"><span class="pre">test_dict</span></code> dictionary with the key <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+</ul>
+</section>
+<section id="u-shaped-test-error-curve">
+<h2>U-shaped test error curve<a class="headerlink" href="#u-shaped-test-error-curve" title="Permalink to this headline">#</a></h2>
+<p>Use the following code to show the corresponding training loss and test loss.  We want the training loss curve to be colored differently from the test loss curve.  The result should reflect the U-shaped test error curve that often occurs in situations of overfitting.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">train_dict</span><span class="p">)</span>
+<span class="n">test_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">test_dict</span><span class="p">)</span>
+<span class="n">train_ser</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;train&quot;</span>
+<span class="n">test_ser</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="n">df_loss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">train_ser</span><span class="p">,</span> <span class="n">test_ser</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_loss</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_loss</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;max_leaf_nodes&quot;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_melted</span> <span class="o">=</span> <span class="n">df_loss</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;max_leaf_nodes&quot;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>followed by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>alt.Chart(df_melted).mark_line().encode(
+    x=???, # bigger values = more flexible
+    y=???, # bigger values = worse performance
+    color=??? # The train curve in one color, the test curve in another.
+)
+</pre></div>
+</div>
+<p>Hint.  To help you make the chart, try evaluating <code class="docutils literal notranslate"><span class="pre">df_melted</span></code> to see what column names it has.</p>
+</section>
+<section id="interpretation-questions">
+<h2>Interpretation questions<a class="headerlink" href="#interpretation-questions" title="Permalink to this headline">#</a></h2>
+<p>Answer the following in a markdown cell (not as a Python comment).</p>
+<ul class="simple">
+<li><p>Where does the model seem to be underfitting the data?</p></li>
+<li><p>Where does the model seem to be overfitting the data?</p></li>
+<li><p>If you had to use one of these 299 models on new data, which would you choose?  Why?</p></li>
+<li><p>What direction in the chart corresponds to models with “more flexibility”?</p></li>
+</ul>
+</section>
 <section id="reminder">
 <h2>Reminder<a class="headerlink" href="#reminder" title="Permalink to this headline">#</a></h2>
-<p>Every group member needs to submit this on Canvas (even if you all submit the same file).</p>
+<p>Every group member needs to submit this on Canvas (even if you all submit the same link).</p>
+<p>Be sure you’ve included the (full) names of you and your group members at the top after “Authors”.  You might consider restarting this notebook (the Deepnote refresh icon, not your browser refresh icon) and running it again to make sure it’s working.</p>
 </section>
 <section id="submission">
 <h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">#</a></h2>
-<p>Submit the pickle file on Canvas, as described in the instructions above.</p>
-<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=6a9b6b01-2155-466e-a7cc-e2f87238cef0' target="_blank">
+<p>Using the Share button at the top right, <strong>enable Comment access level</strong> for anyone with the link. Then submit that link on Canvas.</p>
+<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=ecc3eaee-8db2-43e4-b77a-b95ebebaa35c' target="_blank">
 <img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
 Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
 </section>
@@ -839,17 +939,17 @@ Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></s
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Week8-Wednesday.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Worksheet13.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Week 8 Wednesday</p>
+            <p class="prev-next-title">Worksheet 13</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Worksheet14.html" title="next page">
+    <a class='right-next' id="next-link" href="../Week9/Week9-Intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Worksheet 14</p>
+        <p class="prev-next-title">Week 9</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
