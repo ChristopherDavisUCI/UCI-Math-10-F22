@@ -26,6 +26,12 @@ In both Fall 2021 and Winter 2022, Math 10 included a significant portion on Neu
 
 [scikit-learn user guide](https://scikit-learn.org/stable/tutorial/statistical_inference/model_selection.html).  A Machine Learning topic I would like to understand better is how to choose parameters (for example, the number of clusters when doing clustering, or the depth of a decision tree).  That link provides some guidance, but it is a big topic and there are many different approaches.
 
+## pandas styler
+
+![pandas styler](../images/styler.png)
+
+See these examples in the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html#Styler-Functions).  This provides a way to highlight certain cells in a pandas DataFrame, and is good practice using `apply` and `applymap`.
+
 ## Kaggle
 
 A general way to get ideas is to browse [Kaggle](https://www.kaggle.com/).  Go to a competition or dataset you find interesting, and then click on the *Code* tab near the top.  You will reach a page like this one about [Fashion-MNIST](https://www.kaggle.com/zalando-research/fashionmnist/code).  Any one of these notebooks is likely to contain many possibilities for extra topics.
